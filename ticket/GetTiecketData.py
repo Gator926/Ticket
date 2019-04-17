@@ -17,14 +17,14 @@ class GetTicketData:
 
     def input_station(self, station_type, station_name):
         if station_type == "start":
-            self.__put_input_value("fromStationText", station_name)
-            self.__select_specific_station(station_name)
+            element_id = "fromStationText"
         elif station_type == "end":
-            self.__put_input_value("toStationText", station_name)
-            self.__select_specific_station(station_name)
+            element_id = "toStationText"
         else:
             print("非法车站类型, 可用值: start|end")
             raise ValueError
+        self.__put_input_value(element_id, station_name)
+        self.__select_specific_station(station_name)
 
     def input_date(self, date):
         self.__remove_attribute("train_date", "readonly")
