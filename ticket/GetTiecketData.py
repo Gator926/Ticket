@@ -59,11 +59,20 @@ class GetTicketData:
 
     def click_button_by_id(self, element_id):
         """
-        点击查询按钮
+        根据元素id点击按钮
         :param element_id: 查询按钮的元素id
         :return:
         """
         self.browser.find_element_by_id(element_id).click()
+
+    def get_left_ticket_data(self):
+        pass
+
+    def __get_station_code(self, target_url, station_name):
+        self.open_target_page(target_url)
+        self.input_station("start", station_name)
+        station_code = self.browser.find_element_by_id("fromStation").get_attribute("value")
+        return station_code
 
     def __select_specific_station(self, station_name):
         """
