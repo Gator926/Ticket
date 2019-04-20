@@ -11,6 +11,9 @@ class TestGetTicketData(TestCase):
         self.ticket_data = GetTicketData()
         self.target_page = self.ticket_data.open_target_page(target_url=self.url)
 
+    def tearDown(self):
+        self.ticket_data.browser.close()
+
     def test_open_url(self):
         page_title = self.target_page.title
         self.assertIn("中国铁路12306", page_title)
